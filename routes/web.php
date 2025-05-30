@@ -483,10 +483,11 @@ Route::group(['namespace' => "front", 'prefix' => $prefix, 'middleware' => 'Fron
 
     Route::get('/', [HomeController::class, 'index'])->name('front.home');
     Route::get('/categories', [HomeController::class, 'categories'])->name('front.categories');
-    Route::get('/product/{id}', [HomeController::class, 'show'])->name('front.home');
+    Route::get('/product/{id}', [HomeController::class, 'show'])->name('front.product.show');
     Route::get('/cart', [HomeController::class, 'cart'])->name('front.cart');
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('front.checkout');
-    Route::get('/search', [HomeController::class, 'search']);
+    Route::get('/search', [HomeController::class, 'search'])->name('front.search');
+
 
     Route::get('/cancel-order/{ordernumber}', [HomeController::class, 'cancelorder'])->name('front.cancelorder');
     // third party suucess route
@@ -496,17 +497,17 @@ Route::group(['namespace' => "front", 'prefix' => $prefix, 'middleware' => 'Fron
     Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('front.privacy');
     Route::get('/book', [HomeController::class, 'book'])->name('front.book');
     Route::get('/track-order/{ordernumber}', [HomeController::class, 'trackorder'])->name('front.trackorder');
-    Route::get('/success', [HomeController::class, 'trackorder'])->name('front.trackorder');
-    Route::get('/success/{order_number}', [HomeController::class, 'ordersuccess']);
-    Route::get('/privacypolicy', [HomeController::class, 'privacyshow']);
-    Route::get('/refundprivacypolicy', [HomeController::class, 'refundprivacypolicy']);
-    Route::get('/terms_condition', [HomeController::class, 'terms_condition']);
-    Route::get('/aboutus', [HomeController::class, 'aboutus']);
-    Route::get('/faqshow', [HomeController::class, 'faqshow']);
-    Route::get('/whoweare', [HomeController::class, 'whoweareshow']);
+    Route::get('/success', [HomeController::class, 'orderSuccess'])->name('front.success');
+    Route::get('/success/{order_number}', [HomeController::class, 'orderSuccess'])->name('front.ordersuccess');
+    Route::get('/privacypolicy', [HomeController::class, 'privacyshow'])->name('front.privacyshow');
+    Route::get('/refundprivacypolicy', [HomeController::class, 'refundprivacypolicy'])->name('front.refundprivacy');
+    Route::get('/terms_condition', [HomeController::class, 'terms_condition'])->name('front.termscondition');
+    Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('front.aboutus');
+    Route::get('/faqshow', [HomeController::class, 'faqshow'])->name('front.faqshow');
+    Route::get('/whoweare', [HomeController::class, 'whoweareshow'])->name('front.whoweare');
     Route::get('/details-{slug}', [HomeController::class, 'productdetails'])->name('front.productdetails');
-    Route::post('/timeslot', [HomeController::class, 'timeslot']);
-    Route::post('/subscribe', [HomeController::class, 'user_subscribe']);
+    Route::post('/timeslot', [HomeController::class, 'timeslot'])->name('front.timeslot');
+    Route::post('/subscribe', [HomeController::class, 'user_subscribe'])->name('front.subscribe');
 
 
     Route::get('/login', [WebUserController::class, 'user_login']);
